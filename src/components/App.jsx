@@ -5,34 +5,34 @@ class App extends React.Component {
     //adding lifecycle method to the class
     this.state ={
       results: window.googleMapsData,
+    }
+
+    componentDidMount() {
+      this.getYelpResults('tacos')
+    }
+
+    getYelpResults(query){
+      var options = {
+        key: this.props.API_SOURCES,
+        quert: query
+      };
+
+      /*  this.props.searchYelpQuery(query) {
+      this.setState({
+      results: results,
+      currentResult: result[0]
+    });
+  };
+}  */
+
+handleTableResultEntry(result){
+  this.setState({currentResult: result});
+}
+
+
+
       currentResult: window.googleMapsData[0]
     };
-  }
-
-  componentDidMount() {
-    this.getYelpResults('tacos')
-  }
-
-  getYelpResults(query){
-    var options = {
-      key: this.props.API_SOURCES,
-      quert: query
-    };
-
-  /*  this.props.searchYelpQuery(query) {
-      this.setState({
-        results: results,
-        currentResult: result[0]
-      });
-    };
-  }  */
-
-  handleTableResultEntry(result){
-    this.setState({currentResult: result});
-  }
-
-
-
 //this is where all the components render
 render(){
  return(
